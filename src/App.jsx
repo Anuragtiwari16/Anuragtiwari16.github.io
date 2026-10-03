@@ -116,14 +116,14 @@ export default function App() {
   }, []);
 
   return (
-    <div className="bg-[#050505] min-h-screen text-gray-300 font-['Inter'] selection:bg-fuchsia-500/30 overflow-x-hidden relative">
+    <div className="bg-[#050505] min-h-screen text-gray-300 font-['Inter'] selection:bg-fuchsia-500/30 relative">
       
       {/* FILM GRAIN NOISE */}
       <div className="fixed inset-0 z-50 pointer-events-none opacity-[0.03] mix-blend-overlay bg-[url('https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Dissolve_Noise_Texture.png')]"></div>
 
       {/* REACTIVE SPOTLIGHT */}
       <div 
-        className="fixed inset-0 z-0 pointer-events-none transition-opacity duration-300"
+        className="fixed inset-0 z-30 pointer-events-none transition-opacity duration-300"
         style={{
           background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(255,255,255,0.06), transparent 80%)`
         }}
@@ -139,7 +139,7 @@ export default function App() {
             <a href="#about" className="hover:text-fuchsia-500 transition-colors">About</a>
             <a href="#skills" className="hover:text-fuchsia-500 transition-colors">Skills</a>
             <a href="#projects" className="hover:text-fuchsia-500 transition-colors">Projects</a>
-            <MagneticButton href="#contact" className="px-6 py-2 rounded-full border border-white/20 hover:border-fuchsia-500 transition-colors">
+            <MagneticButton href="#contact" className="px-6 py-2 rounded-full border border-[#ffffff33] hover:border-fuchsia-500 transition-colors">
               Contact
             </MagneticButton>
           </div>
@@ -150,7 +150,7 @@ export default function App() {
       <section id="home" className="relative min-h-screen flex items-center justify-center pt-20">
         <div className="max-w-7xl mx-auto px-6 relative z-10 w-full text-center flex flex-col items-center">
           
-          <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, ease: "easeOut" }} className="w-24 h-24 rounded-full border border-white/10 p-2 mb-10 overflow-hidden relative shadow-[0_0_50px_rgba(217,70,239,0.2)]">
+          <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, ease: "easeOut" }} className="w-24 h-24 rounded-full border border-[#ffffff1a] p-2 mb-10 overflow-hidden relative shadow-[0_0_50px_rgba(217,70,239,0.2)]">
              <div className="absolute inset-0 bg-gradient-to-tr from-fuchsia-600 to-blue-600 animate-spin" style={{ animationDuration: '4s' }}></div>
              <div className="absolute inset-1 bg-[#050505] rounded-full flex items-center justify-center z-10">
                 <span className="font-bold text-xl text-white">AT</span>
@@ -170,10 +170,10 @@ export default function App() {
           </motion.div>
 
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5, duration: 1 }} className="flex items-center gap-6">
-             <MagneticButton href={portfolioData.personal.github} className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors" target="_blank">
+             <MagneticButton href={portfolioData.personal.github} className="w-14 h-14 rounded-full border border-[#ffffff33] flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors" target="_blank">
                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
              </MagneticButton>
-             <MagneticButton href={portfolioData.personal.linkedin} className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors" target="_blank">
+             <MagneticButton href={portfolioData.personal.linkedin} className="w-14 h-14 rounded-full border border-[#ffffff33] flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors" target="_blank">
                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
              </MagneticButton>
           </motion.div>
@@ -189,7 +189,7 @@ export default function App() {
           {/* Row 1: Who Am I & Building With */}
           <div className="grid md:grid-cols-3 gap-6">
             
-            <TiltCard className="md:col-span-2 relative rounded-[2rem] bg-gradient-to-br from-white/5 to-transparent border border-white/10 p-8 md:p-12 overflow-hidden group">
+            <TiltCard className="md:col-span-2 relative rounded-[2rem] bg-gradient-to-br from-white/5 to-transparent border border-[#ffffff1a] p-8 md:p-12 overflow-hidden group">
               <div className="absolute inset-0 bg-fuchsia-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-[80px]"></div>
               <h3 className="text-3xl font-bold text-white mb-6 font-['Outfit'] flex items-center gap-3">
                 <Sparkles className="text-fuchsia-500" /> Who Am I?
@@ -207,7 +207,7 @@ export default function App() {
               </div>
             </TiltCard>
 
-            <TiltCard className="md:col-span-1 relative rounded-[2rem] bg-gradient-to-br from-blue-600/10 to-fuchsia-600/10 border border-white/10 p-8 md:p-12 flex flex-col justify-center overflow-hidden group">
+            <TiltCard className="md:col-span-1 relative rounded-[2rem] bg-gradient-to-br from-blue-600/10 to-fuchsia-600/10 border border-[#ffffff1a] p-8 md:p-12 flex flex-col justify-center overflow-hidden group">
               <div className="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-[60px]"></div>
               <h3 className="text-xl font-bold text-white mb-8 font-['Outfit'] uppercase tracking-widest text-center relative z-10">Building With</h3>
               <div className="flex flex-col gap-4 w-full relative z-10">
@@ -218,7 +218,7 @@ export default function App() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
-                    className="w-full bg-[#111] border border-white/10 rounded-xl p-4 text-center text-gray-300 font-medium hover:bg-white/5 hover:border-fuchsia-500/30 transition-colors"
+                    className="w-full bg-[#111] border border-[#ffffff1a] rounded-xl p-4 text-center text-gray-300 font-medium hover:bg-[#ffffff0d] hover:border-fuchsia-500/30 transition-colors"
                   >
                     {item}
                   </motion.div>
@@ -238,7 +238,7 @@ export default function App() {
                 { num: '03', title: 'Full-Stack Applications', desc: 'Building complete applications using React, FastAPI, Python, Streamlit and modern web technologies.' },
                 { num: '04', title: 'Explainable AI', desc: 'Exploring transparent ML systems using SHAP, LIME and feature-level explanations.' }
               ].map((card, i) => (
-                <div key={i} className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 group">
+                <div key={i} className="bg-[#ffffff0d] border border-[#ffffff1a] rounded-2xl p-6 hover:bg-[#ffffff1a] transition-all duration-300 group">
                   <div className="text-fuchsia-500 font-mono text-sm mb-4">{card.num}</div>
                   <h4 className="text-xl font-bold text-white mb-3">{card.title}</h4>
                   <p className="text-gray-400 text-sm leading-relaxed">{card.desc}</p>
@@ -251,7 +251,7 @@ export default function App() {
           <div className="grid lg:grid-cols-2 gap-6 pt-10">
             
             {/* Approach */}
-            <div className="bg-[#0a0a0a] border border-white/10 rounded-[2rem] p-8 md:p-12 flex flex-col justify-center">
+            <div className="bg-[#0a0a0a] border border-[#ffffff1a] rounded-[2rem] p-8 md:p-12 flex flex-col justify-center">
               <h3 className="text-2xl font-bold text-white mb-8 font-['Outfit']">My Approach</h3>
               <div className="flex flex-wrap items-center gap-2 md:gap-4 mb-8 text-sm md:text-base font-semibold tracking-wider text-fuchsia-400 uppercase">
                 <span>Learn</span> <ArrowRight size={16} className="text-gray-600" />
@@ -265,7 +265,7 @@ export default function App() {
             </div>
 
             {/* Current Focus */}
-            <div className="bg-[#0a0a0a] border border-white/10 rounded-[2rem] p-8 md:p-12">
+            <div className="bg-[#0a0a0a] border border-[#ffffff1a] rounded-[2rem] p-8 md:p-12">
               <h3 className="text-2xl font-bold text-white mb-8 font-['Outfit']">Currently Focused On</h3>
               <div className="flex flex-wrap gap-3">
                 {['AI / ML', 'Data Science', 'Data Analytics', 'NLP', 'Generative AI', 'Full-Stack Development', 'Explainable AI'].map(tag => (
@@ -281,14 +281,14 @@ export default function App() {
           {/* Row 4: Beyond Code & What's Next */}
           <div className="grid md:grid-cols-2 gap-6 pt-4">
             
-            <div className="bg-gradient-to-br from-white/5 to-transparent border border-white/10 rounded-[2rem] p-8 md:p-10">
+            <div className="bg-gradient-to-br from-white/5 to-transparent border border-[#ffffff1a] rounded-[2rem] p-8 md:p-10">
               <h3 className="text-xl font-bold text-white mb-4 font-['Outfit']">Beyond Code</h3>
               <p className="text-gray-400 leading-relaxed text-sm md:text-base">
                 When I'm away from the keyboard, I enjoy cricket, exploring new technology and discovering new ideas through technical content and web series.
               </p>
             </div>
 
-            <div className="bg-gradient-to-bl from-white/5 to-transparent border border-white/10 rounded-[2rem] p-8 md:p-10 flex flex-col justify-between">
+            <div className="bg-gradient-to-bl from-white/5 to-transparent border border-[#ffffff1a] rounded-[2rem] p-8 md:p-10 flex flex-col justify-between">
               <div>
                 <h3 className="text-xl font-bold text-white mb-4 font-['Outfit']">What's Next?</h3>
                 <p className="text-gray-400 leading-relaxed text-sm md:text-base mb-6">
@@ -317,7 +317,7 @@ export default function App() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05, type: "spring", stiffness: 200 }}
                 whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,1)", color: "#000" }}
-                className="px-6 py-3 rounded-full border border-white/20 bg-white/5 text-gray-300 font-medium cursor-crosshair transition-colors duration-300"
+                className="px-6 py-3 rounded-full border border-[#ffffff33] bg-[#ffffff0d] text-gray-300 font-medium cursor-crosshair transition-colors duration-300"
               >
                 {s}
               </motion.div>
@@ -332,7 +332,7 @@ export default function App() {
             {portfolioData.projects.map((proj, idx) => (
               <div key={idx} onClick={() => proj.isCaseStudy ? setSelectedProject(proj) : null} className={proj.isCaseStudy ? "cursor-pointer" : ""}>
                 <TiltCard className="relative group h-full">
-                  <div className="bg-[#0a0a0a] border border-white/10 rounded-[2rem] p-10 h-full flex flex-col relative overflow-hidden transition-colors group-hover:border-fuchsia-500/50">
+                  <div className="bg-[#0a0a0a] border border-[#ffffff1a] rounded-[2rem] p-10 h-full flex flex-col relative overflow-hidden transition-colors group-hover:border-fuchsia-500/50">
                     <div className="absolute -right-20 -top-20 w-64 h-64 bg-fuchsia-600/20 blur-[100px] group-hover:bg-fuchsia-600/40 transition-colors duration-700"></div>
                     
                     <div className="flex justify-between items-center mb-8 relative z-10">
@@ -369,7 +369,7 @@ export default function App() {
           
           <div className="relative pl-10 md:pl-0">
             {/* The Track */}
-            <div className="absolute left-10 md:left-1/2 top-0 bottom-0 w-[1px] bg-white/10 -translate-x-1/2"></div>
+            <div className="absolute left-10 md:left-1/2 top-0 bottom-0 w-[1px] bg-[#ffffff1a] -translate-x-1/2"></div>
             
             {/* The Animated Laser Trace */}
             <motion.div 
@@ -430,7 +430,7 @@ export default function App() {
               Email Me
             </MagneticButton>
 
-            <div className="relative z-10 flex items-center justify-center gap-8 border-t border-white/10 pt-8 mt-12 w-3/4 mx-auto">
+            <div className="relative z-10 flex items-center justify-center gap-8 border-t border-[#ffffff1a] pt-8 mt-12 w-3/4 mx-auto">
               <a href={portfolioData.personal.github} target="_blank" className="text-gray-400 hover:text-white transition-colors flex items-center gap-2 text-sm uppercase tracking-widest font-semibold">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
                 GitHub
@@ -459,7 +459,7 @@ export default function App() {
               {/* Close Button */}
               <button 
                 onClick={() => setSelectedProject(null)}
-                className="fixed top-8 right-8 z-[110] w-12 h-12 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full flex items-center justify-center text-white transition-all backdrop-blur-md"
+                className="fixed top-8 right-8 z-[110] w-12 h-12 bg-[#ffffff1a] hover:bg-[#ffffff33] border border-[#ffffff33] rounded-full flex items-center justify-center text-white transition-all backdrop-blur-md"
               >
                 <X size={24} />
               </button>
@@ -475,7 +475,7 @@ export default function App() {
                   
                   <div className="flex flex-wrap justify-center gap-3">
                     {selectedProject.caseStudy.badges.map(badge => (
-                      <span key={badge} className="px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-white text-sm font-semibold tracking-wide uppercase">
+                      <span key={badge} className="px-5 py-2.5 rounded-full bg-[#ffffff0d] border border-[#ffffff1a] text-white text-sm font-semibold tracking-wide uppercase">
                         {badge}
                       </span>
                     ))}
@@ -485,7 +485,7 @@ export default function App() {
                 {/* 2. Interactive Project Preview */}
                 <motion.div initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }} className="mb-32 relative">
                   <div className="absolute inset-0 bg-gradient-to-b from-fuchsia-600/20 to-blue-600/20 blur-[100px] rounded-[3rem]"></div>
-                  <div className="relative bg-[#050505] border border-white/10 rounded-[2rem] overflow-hidden shadow-2xl p-6 md:p-12 flex flex-col items-center">
+                  <div className="relative bg-[#050505] border border-[#ffffff1a] rounded-[2rem] overflow-hidden shadow-2xl p-6 md:p-12 flex flex-col items-center">
                     
                     {/* Mock Dashboard Layout */}
                     <div className="w-full border border-gray-800 rounded-xl overflow-hidden bg-[#0a0a0a]">
@@ -642,11 +642,11 @@ export default function App() {
                 {/* 4. AI Intelligence Section */}
                 <motion.div initial={{ y: 50, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} className="mb-32">
                    <h3 className="text-3xl md:text-5xl font-bold text-white mb-12 font-['Outfit'] text-center">AI Assessment Pipeline</h3>
-                   <div className="bg-[#0a0a0a] border border-white/10 rounded-3xl p-8 md:p-16 relative overflow-hidden">
+                   <div className="bg-[#0a0a0a] border border-[#ffffff1a] rounded-3xl p-8 md:p-16 relative overflow-hidden">
                      <div className="flex flex-col md:flex-row flex-wrap items-center justify-center gap-4 relative z-10">
                         {selectedProject.caseStudy.aiPipeline.map((step, idx) => (
                           <React.Fragment key={idx}>
-                            <div className="px-6 py-3 bg-white/5 border border-white/10 rounded-xl text-fuchsia-300 font-medium text-center shadow-xl">
+                            <div className="px-6 py-3 bg-[#ffffff0d] border border-[#ffffff1a] rounded-xl text-fuchsia-300 font-medium text-center shadow-xl">
                               {step}
                             </div>
                             {idx < selectedProject.caseStudy.aiPipeline.length - 1 && (
@@ -666,7 +666,7 @@ export default function App() {
                    <h3 className="text-3xl md:text-5xl font-bold text-white mb-12 font-['Outfit'] text-center">System Modules</h3>
                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                       {selectedProject.caseStudy.modules.map((mod, idx) => (
-                        <div key={idx} className="bg-gradient-to-br from-white/5 to-transparent border border-white/10 p-8 rounded-2xl hover:border-blue-500/50 transition-colors">
+                        <div key={idx} className="bg-gradient-to-br from-white/5 to-transparent border border-[#ffffff1a] p-8 rounded-2xl hover:border-blue-500/50 transition-colors">
                            <div className="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center mb-6 border border-blue-500/20">
                              <ShieldCheck className="text-blue-400" />
                            </div>
