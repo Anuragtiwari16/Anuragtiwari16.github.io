@@ -1,14 +1,14 @@
 export const portfolioData = {
   personal: {
     name: "Anurag Tiwari",
-    tagline: "Building intelligent, interactive and data-driven digital experiences.",
+    tagline: "Engineering machine intelligence, predictive models and high-impact data analytics.",
     degree: "B.Tech CSE (Data Science)",
     college: "ABES Engineering College",
     location: "Ghaziabad, Uttar Pradesh",
     phone: "9336936633",
     email: "anuragtiwari738816@gmail.com",
     cgpa: "7.33",
-    aboutIntro: "A B.Tech CSE (Data Science) student at ABES Engineering College, focused on building intelligent, interactive, and data-driven digital experiences. Passionate about software development, machine learning, and modern web technologies.",
+    aboutIntro: "A B.Tech CSE (Data Science) student at ABES Engineering College, specializing in Machine Learning, predictive modeling, and data analytics architectures. Passionate about engineering end-to-end intelligent systems, scalable backend pipelines, and interactive analytics dashboards.",
     github: "https://github.com/Anuragtiwari16",
     linkedin: "https://www.linkedin.com/in/anurag-tiwariweb"
   },
@@ -115,6 +115,52 @@ export const portfolioData = {
       project: "Spam Detection System",
       technologies: ["Python", "Machine Learning", "Flask", "React.js", "SQLite"],
       description: "Developed an ML-based web application to classify Email/SMS messages as Spam or Not Spam using text classification and prediction confidence."
+    }
+  ],
+  journey: [
+    {
+      step: "01",
+      title: "Class 10th",
+      subtitle: "Secondary Education",
+      institution: "Shiv Nayak Singh SVM IC, Gauriganj, Amethi, UP",
+      board: "UP Board",
+      date: "2021",
+      score: "87.33%",
+      highlight: "Scored 87.33% with distinction, building a strong analytical and logical foundation in Mathematics and Sciences.",
+      accent: "emerald"
+    },
+    {
+      step: "02",
+      title: "Class 12th",
+      subtitle: "Senior Secondary (Science & Math)",
+      institution: "Shri Rananjay Inter College, Gauriganj, Amethi, UP",
+      board: "UP Board",
+      date: "2023",
+      score: "74.2%",
+      highlight: "Completed Senior Secondary in Science & Mathematics with 74.2%, cultivating deep problem-solving skills leading into Computer Science.",
+      accent: "blue"
+    },
+    {
+      step: "03",
+      title: "B.Tech in CSE (Data Science)",
+      subtitle: "Undergraduate Degree",
+      institution: "ABES Engineering College, AKTU",
+      board: "AKTU, Ghaziabad",
+      date: "September 2024 - August 2028",
+      score: "CGPA: 7.33",
+      highlight: "Specializing in Data Science, Machine Learning algorithms, statistical modeling, data structures, and intelligent software engineering.",
+      accent: "purple"
+    },
+    {
+      step: "04",
+      title: "IBM-NASSCOM Virtual Internship",
+      subtitle: "Industry Machine Learning Internship",
+      institution: "IBM-NASSCOM (PBEL 3.0)",
+      board: "Spam Detection & EDA Certification",
+      date: "June 2026 - July 2026",
+      score: "NASSCOM Certified in EDA",
+      highlight: "Developed an ML-based web application to classify Email/SMS messages with prediction confidence scores, and completed NASSCOM Exploratory Data Analysis certification.",
+      accent: "fuchsia"
     }
   ],
   education: [

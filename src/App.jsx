@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useMotionValue, useSpring, useMotionTemplate, AnimatePresence } from 'framer-motion';
 import { Code, Users, Mail, ExternalLink, Code2, Terminal, Database, Cloud, BookOpen, Briefcase, Award, ChevronRight, Sparkles, MapPin, X, ArrowRight, ShieldCheck, Activity, UserCheck } from 'lucide-react';
 import { portfolioData } from './data/portfolioData';
+import BankDashboard from './components/BankDashboard';
 
 const MagneticButton = ({ children, className, href }) => {
   const ref = useRef(null);
@@ -98,7 +99,8 @@ const StaggeredText = ({ text, className }) => {
 
 export default function App() {
   const [selectedProject, setSelectedProject] = useState(null);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
+  const [hasMoved, setHasMoved] = useState(false);
   
   // Timeline scroll hook
   const timelineRef = useRef(null);
@@ -110,6 +112,7 @@ export default function App() {
   useEffect(() => {
     const handleMouseMove = (e) => {
       setMousePos({ x: e.clientX, y: e.clientY });
+      setHasMoved(true);
     };
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
@@ -123,9 +126,9 @@ export default function App() {
 
       {/* REACTIVE SPOTLIGHT */}
       <div 
-        className="fixed inset-0 z-30 pointer-events-none transition-opacity duration-300"
+        className={`fixed inset-0 z-30 pointer-events-none transition-opacity duration-500 ${hasMoved ? 'opacity-100' : 'opacity-0'}`}
         style={{
-          background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(255,255,255,0.06), transparent 80%)`
+          background: `radial-gradient(650px circle at ${mousePos.x}px ${mousePos.y}px, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.03) 40%, transparent 75%)`
         }}
       />
 
@@ -160,7 +163,7 @@ export default function App() {
           <StaggeredText text={`Hi, I am ${portfolioData.personal.name.split(' ')[0]}.`} className="text-5xl md:text-[5rem] lg:text-[7rem] font-extrabold text-white font-['Outfit'] mb-2 tracking-tighter leading-none" />
           
           <motion.h2 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8, duration: 1 }} className="text-2xl md:text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-gray-600 font-['Outfit'] mb-12 tracking-tight">
-            I craft digital experiences.
+            Engineering Machine Intelligence & Predictive Data Analytics.
           </motion.h2>
           
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1, duration: 1 }} className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
@@ -335,7 +338,7 @@ export default function App() {
                   <div className="bg-[#0a0a0a] border border-[#ffffff1a] rounded-[2rem] p-10 h-full flex flex-col relative overflow-hidden transition-colors group-hover:border-fuchsia-500/50">
                     <div className="absolute -right-20 -top-20 w-64 h-64 bg-fuchsia-600/20 blur-[100px] group-hover:bg-fuchsia-600/40 transition-colors duration-700"></div>
                     
-                    <div className="flex justify-between items-center mb-8 relative z-10">
+                    <div className="flex justify-between items-center mb-6 relative z-10">
                       <Cloud className="text-white/50 group-hover:text-fuchsia-400 transition-colors" size={40} />
                       {proj.isCaseStudy ? (
                          <div className="flex items-center gap-2 text-fuchsia-400 font-semibold text-sm tracking-wider uppercase bg-fuchsia-500/10 px-4 py-2 rounded-full border border-fuchsia-500/20">
@@ -374,42 +377,120 @@ export default function App() {
             {/* The Animated Laser Trace */}
             <motion.div 
               style={{ scaleY: timelineProgress, transformOrigin: "top" }}
-              className="absolute left-10 md:left-1/2 top-0 bottom-0 w-[3px] bg-gradient-to-b from-fuchsia-500 to-blue-500 -translate-x-1/2 shadow-[0_0_15px_rgba(217,70,239,0.8)]"
+              className="absolute left-10 md:left-1/2 top-0 bottom-0 w-[3px] bg-gradient-to-b from-emerald-500 via-blue-500 via-purple-500 to-fuchsia-500 -translate-x-1/2 shadow-[0_0_15px_rgba(217,70,239,0.8)]"
             ></motion.div>
             
             <div className="space-y-32 relative z-10">
               
-              {/* IBM Internship */}
-              <div className="flex flex-col md:flex-row items-center justify-between w-full">
+              {/* 1. Class 10th in 2021 with 87.33% */}
+              <div className="relative flex flex-col md:flex-row items-center justify-between w-full">
                 <div className="hidden md:block w-5/12 text-right pr-16">
-                  <h3 className="text-2xl font-bold text-white font-['Outfit']">{portfolioData.internships[0]?.company}</h3>
-                  <p className="text-fuchsia-400 font-mono mt-1 text-sm">{portfolioData.internships[0]?.date}</p>
+                  <h3 className="text-2xl font-bold text-white font-['Outfit']">Shiv Nayak Singh SVM IC, Gauriganj</h3>
+                  <div className="inline-block mt-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs font-semibold">
+                    2021 (UP Board)
+                  </div>
                 </div>
-                <div className="w-4 h-4 bg-[#050505] border-2 border-fuchsia-500 rounded-full absolute left-10 md:left-1/2 -translate-x-1/2 shadow-[0_0_10px_rgba(217,70,239,1)]"></div>
+                <div className="w-5 h-5 bg-[#050505] border-2 border-emerald-500 rounded-full absolute left-10 md:left-1/2 -translate-x-1/2 top-1.5 md:top-1/2 md:-translate-y-1/2 z-20 shadow-[0_0_12px_rgba(16,185,129,1)] flex items-center justify-center">
+                  <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></div>
+                </div>
                 <div className="w-full md:w-5/12 pl-12 md:pl-16">
                   <div className="md:hidden mb-2">
-                    <h3 className="text-2xl font-bold text-white font-['Outfit']">{portfolioData.internships[0]?.company}</h3>
-                    <p className="text-fuchsia-400 font-mono text-sm">{portfolioData.internships[0]?.date}</p>
+                    <h3 className="text-2xl font-bold text-white font-['Outfit']">Shiv Nayak Singh SVM IC, Gauriganj</h3>
+                    <div className="inline-block mt-1 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs font-semibold">
+                      2021 (UP Board)
+                    </div>
                   </div>
-                  <h4 className="text-lg font-semibold text-white mb-2">Project: {portfolioData.internships[0]?.project}</h4>
-                  <p className="text-gray-400 text-sm leading-relaxed">{portfolioData.internships[0]?.description}</p>
+                  <h4 className="text-lg font-semibold text-white mb-1">Class 10th (Secondary Education)</h4>
+                  <p className="text-gray-400 text-sm leading-relaxed mb-3">
+                    Distinction in Mathematics and Science, building a strong logical foundation.
+                  </p>
+                  <div className="inline-block px-3 py-1 rounded-lg bg-[#111] border border-gray-800 text-xs font-mono text-gray-300">
+                    Distinction: <span className="text-emerald-400 font-bold">87.33%</span>
+                  </div>
                 </div>
               </div>
 
-              {/* Education */}
-              <div className="flex flex-col md:flex-row-reverse items-center justify-between w-full">
+              {/* 2. Class 12th in 2023 with 74.2% */}
+              <div className="relative flex flex-col md:flex-row-reverse items-center justify-between w-full">
                 <div className="hidden md:block w-5/12 text-left pl-16">
-                  <h3 className="text-2xl font-bold text-white font-['Outfit']">{portfolioData.education[0]?.institution}</h3>
-                  <p className="text-blue-400 font-mono mt-1 text-sm">{portfolioData.education[0]?.date}</p>
+                  <h3 className="text-2xl font-bold text-white font-['Outfit']">Shri Rananjay Inter College, Gauriganj</h3>
+                  <div className="inline-block mt-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 font-mono text-xs font-semibold">
+                    2023 (UP Board)
+                  </div>
                 </div>
-                <div className="w-4 h-4 bg-[#050505] border-2 border-blue-500 rounded-full absolute left-10 md:left-1/2 -translate-x-1/2 shadow-[0_0_10px_rgba(59,130,246,1)]"></div>
+                <div className="w-5 h-5 bg-[#050505] border-2 border-blue-500 rounded-full absolute left-10 md:left-1/2 -translate-x-1/2 top-1.5 md:top-1/2 md:-translate-y-1/2 z-20 shadow-[0_0_12px_rgba(59,130,246,1)] flex items-center justify-center">
+                  <div className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse"></div>
+                </div>
                 <div className="w-full md:w-5/12 pl-12 md:pr-16 md:pl-0 md:text-right">
                   <div className="md:hidden mb-2">
-                    <h3 className="text-2xl font-bold text-white font-['Outfit']">{portfolioData.education[0]?.institution}</h3>
-                    <p className="text-blue-400 font-mono text-sm">{portfolioData.education[0]?.date}</p>
+                    <h3 className="text-2xl font-bold text-white font-['Outfit']">Shri Rananjay Inter College, Gauriganj</h3>
+                    <div className="inline-block mt-1 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 font-mono text-xs font-semibold">
+                      2023 (UP Board)
+                    </div>
                   </div>
-                  <h4 className="text-lg font-semibold text-white mb-2">{portfolioData.education[0]?.degree}</h4>
-                  <p className="text-gray-400 text-sm leading-relaxed">CGPA: {portfolioData.education[0]?.score}. Spec in Data Science.</p>
+                  <h4 className="text-lg font-semibold text-white mb-1">Class 12th (Senior Secondary)</h4>
+                  <p className="text-gray-400 text-sm leading-relaxed mb-3">
+                    Senior Secondary in Science & Mathematics, establishing core problem-solving.
+                  </p>
+                  <div className="inline-block px-3 py-1 rounded-lg bg-[#111] border border-gray-800 text-xs font-mono text-gray-300">
+                    Science & Math: <span className="text-blue-400 font-bold">74.2%</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* 3. ABES Engineering College */}
+              <div className="relative flex flex-col md:flex-row items-center justify-between w-full">
+                <div className="hidden md:block w-5/12 text-right pr-16">
+                  <h3 className="text-2xl font-bold text-white font-['Outfit']">ABES Engineering College, AKTU</h3>
+                  <div className="inline-block mt-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 font-mono text-xs font-semibold">
+                    September 2024 - August 2028
+                  </div>
+                </div>
+                <div className="w-5 h-5 bg-[#050505] border-2 border-purple-500 rounded-full absolute left-10 md:left-1/2 -translate-x-1/2 top-1.5 md:top-1/2 md:-translate-y-1/2 z-20 shadow-[0_0_12px_rgba(168,85,247,1)] flex items-center justify-center">
+                  <div className="w-1.5 h-1.5 bg-purple-400 rounded-full animate-pulse"></div>
+                </div>
+                <div className="w-full md:w-5/12 pl-12 md:pl-16">
+                  <div className="md:hidden mb-2">
+                    <h3 className="text-2xl font-bold text-white font-['Outfit']">ABES Engineering College, AKTU</h3>
+                    <div className="inline-block mt-1 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 font-mono text-xs font-semibold">
+                      September 2024 - August 2028
+                    </div>
+                  </div>
+                  <h4 className="text-lg font-semibold text-white mb-1">B.Tech in CSE (Data Science)</h4>
+                  <p className="text-gray-400 text-sm leading-relaxed mb-3">
+                    Specialization in Data Science, Machine Learning algorithms, and software engineering.
+                  </p>
+                  <div className="inline-block px-3 py-1 rounded-lg bg-[#111] border border-gray-800 text-xs font-mono text-gray-300">
+                    Academic CGPA: <span className="text-purple-400 font-bold">7.33</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* 4. IBM-NASSCOM Virtual Internship */}
+              <div className="relative flex flex-col md:flex-row-reverse items-center justify-between w-full">
+                <div className="hidden md:block w-5/12 text-left pl-16">
+                  <h3 className="text-2xl font-bold text-white font-['Outfit']">IBM-NASSCOM Virtual Internship (PBEL 3.0)</h3>
+                  <div className="inline-block mt-2 px-3 py-1 rounded-full bg-fuchsia-500/10 border border-fuchsia-500/30 text-fuchsia-400 font-mono text-xs font-semibold">
+                    June 2026 - July 2026
+                  </div>
+                </div>
+                <div className="w-5 h-5 bg-[#050505] border-2 border-fuchsia-500 rounded-full absolute left-10 md:left-1/2 -translate-x-1/2 top-1.5 md:top-1/2 md:-translate-y-1/2 z-20 shadow-[0_0_12px_rgba(217,70,239,1)] flex items-center justify-center">
+                  <div className="w-1.5 h-1.5 bg-fuchsia-400 rounded-full animate-pulse"></div>
+                </div>
+                <div className="w-full md:w-5/12 pl-12 md:pr-16 md:pl-0 md:text-right">
+                  <div className="md:hidden mb-2">
+                    <h3 className="text-2xl font-bold text-white font-['Outfit']">IBM-NASSCOM Virtual Internship (PBEL 3.0)</h3>
+                    <div className="inline-block mt-1 px-3 py-1 rounded-full bg-fuchsia-500/10 border border-fuchsia-500/30 text-fuchsia-400 font-mono text-xs font-semibold">
+                      June 2026 - July 2026
+                    </div>
+                  </div>
+                  <h4 className="text-lg font-semibold text-white mb-1">Project: Spam Detection System & EDA</h4>
+                  <p className="text-gray-400 text-sm leading-relaxed mb-3">
+                    ML text classification with prediction confidence scores. NASSCOM Certified in Exploratory Data Analysis.
+                  </p>
+                  <div className="inline-block px-3 py-1 rounded-lg bg-[#111] border border-gray-800 text-xs font-mono text-gray-300">
+                    Certification: <span className="text-fuchsia-400 font-bold">NASSCOM EDA</span>
+                  </div>
                 </div>
               </div>
 
@@ -535,47 +616,7 @@ export default function App() {
                        )}
 
                        {selectedProject.id === 'bank_dashboard' && (
-                         <>
-                           {/* BANK DASHBOARD Mock */}
-                           <div className="h-14 border-b border-gray-800 flex items-center px-6 justify-between bg-black">
-                              <div className="flex items-center gap-2 text-white font-bold tracking-widest"><Activity className="text-emerald-500"/> BRANCH INTELLIGENCE</div>
-                              <div className="flex gap-4">
-                                <div className="w-8 h-8 rounded-full bg-gray-800"></div>
-                              </div>
-                           </div>
-                           <div className="p-6 md:p-10">
-                             <div className="grid grid-cols-3 gap-6 mb-6">
-                                <div className="bg-[#111] border border-emerald-500/30 p-6 rounded-xl border-l-4 border-l-emerald-500">
-                                  <div className="text-gray-400 text-sm mb-2">Total Deposits (Q3)</div>
-                                  <div className="text-3xl font-bold text-white">$4.2M</div>
-                                </div>
-                                <div className="bg-[#111] border border-blue-500/30 p-6 rounded-xl border-l-4 border-l-blue-500">
-                                  <div className="text-gray-400 text-sm mb-2">Loan Approvals</div>
-                                  <div className="text-3xl font-bold text-white">84%</div>
-                                </div>
-                                <div className="bg-[#111] border border-purple-500/30 p-6 rounded-xl border-l-4 border-l-purple-500">
-                                  <div className="text-gray-400 text-sm mb-2">Customer Retention</div>
-                                  <div className="text-3xl font-bold text-white">92.4%</div>
-                                </div>
-                             </div>
-                             <div className="grid grid-cols-3 gap-6">
-                               <div className="col-span-2 bg-[#111] border border-gray-800 p-6 rounded-xl">
-                                 <div className="text-white font-semibold mb-6">Branch Performance Comparison</div>
-                                 <div className="flex items-end gap-4 h-32 mt-4">
-                                   <div className="w-1/6 bg-blue-500/50 rounded-t-md" style={{height: '60%'}}></div>
-                                   <div className="w-1/6 bg-emerald-500/80 rounded-t-md" style={{height: '90%'}}></div>
-                                   <div className="w-1/6 bg-blue-500/50 rounded-t-md" style={{height: '40%'}}></div>
-                                   <div className="w-1/6 bg-blue-500/50 rounded-t-md" style={{height: '75%'}}></div>
-                                 </div>
-                               </div>
-                               <div className="bg-[#111] border border-gray-800 p-6 rounded-xl flex flex-col justify-center">
-                                 <div className="text-emerald-400 font-semibold mb-2"><Sparkles size={16} className="inline"/> ML Prediction</div>
-                                 <div className="text-gray-300 text-sm mb-4">Branch #402 predicted to miss Q4 targets by 12%. Recommend targeted loan campaigns.</div>
-                                 <button className="bg-emerald-500/20 text-emerald-300 py-2 rounded-lg text-sm border border-emerald-500/30">View Model Insights</button>
-                               </div>
-                             </div>
-                           </div>
-                         </>
+                         <BankDashboard />
                        )}
 
                        {selectedProject.id === 'creditlens' && (
