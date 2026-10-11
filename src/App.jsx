@@ -114,8 +114,20 @@ export default function App() {
       setMousePos({ x: e.clientX, y: e.clientY });
       setHasMoved(true);
     };
+    const handleTouchMove = (e) => {
+      if (e.touches && e.touches[0]) {
+        setMousePos({ x: e.touches[0].clientX, y: e.touches[0].clientY });
+        setHasMoved(true);
+      }
+    };
     window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener('touchmove', handleTouchMove);
+    window.addEventListener('touchstart', handleTouchMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchstart', handleTouchMove);
+    };
   }, []);
 
   return (
@@ -126,9 +138,9 @@ export default function App() {
 
       {/* REACTIVE SPOTLIGHT */}
       <div 
-        className={`fixed inset-0 z-30 pointer-events-none transition-opacity duration-500 ${hasMoved ? 'opacity-100' : 'opacity-0'}`}
+        className={`fixed inset-0 z-30 pointer-events-none transition-opacity duration-300 ${hasMoved ? 'opacity-100' : 'opacity-0'}`}
         style={{
-          background: `radial-gradient(650px circle at ${mousePos.x}px ${mousePos.y}px, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.03) 40%, transparent 75%)`
+          background: `radial-gradient(650px circle at ${mousePos.x}px ${mousePos.y}px, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.04) 35%, transparent 75%)`
         }}
       />
 
@@ -376,8 +388,8 @@ export default function App() {
             
             {/* The Animated Laser Trace */}
             <motion.div 
-              style={{ scaleY: timelineProgress, transformOrigin: "top" }}
-              className="absolute left-10 md:left-1/2 top-0 bottom-0 w-[3px] bg-gradient-to-b from-emerald-500 via-blue-500 via-purple-500 to-fuchsia-500 -translate-x-1/2 shadow-[0_0_15px_rgba(217,70,239,0.8)]"
+              style={{ scaleY: timelineProgress, originY: 0 }}
+              className="origin-top absolute left-10 md:left-1/2 top-0 bottom-0 w-[3px] bg-gradient-to-b from-emerald-500 via-blue-500 via-purple-500 to-fuchsia-500 -translate-x-1/2 shadow-[0_0_15px_rgba(217,70,239,0.8)]"
             ></motion.div>
             
             <div className="space-y-32 relative z-10">
